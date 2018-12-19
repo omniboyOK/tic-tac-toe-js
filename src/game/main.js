@@ -12,6 +12,7 @@ game.addAsset('back.png');
 game.addAsset('circle.png');
 game.addAsset('cross.png');
 game.addAsset('field.png');
+game.addAsset('repeat.png');
 // ==============================================================================
 // Clase Main de mi juego
 // ==============================================================================
@@ -59,6 +60,10 @@ game.createClass('ParallaxSprite', 'TilingSprite', {
 // ==============================================================================
 game.createClass('Board', {
 	init: function() {
+// ------------------------------------------------------------------------------
+// Dibujamos el boton reset en nuestro tablero
+// ------------------------------------------------------------------------------
+    this.button = new game.Button(550, 20);
 // ------------------------------------------------------------------------------	    
 // Dibujamos la posicion de cada casilla en la pantalla, nuestro tablero.
 // ------------------------------------------------------------------------------
@@ -110,9 +115,8 @@ game.createClass('Field',{
         this.field.position.x = posx;
         this.field.addTo(game.scene.stage);
         this.field.click = this.click.bind(this);
-        this.selected = false;
-// ------------------------------------------------------------------------------       
-    },
+        this.selected = false;       
+        },
 // ------------------------------------------------------------------------------
 // Funcion para reconocer los clicks del mouse en el objeto
 // ------------------------------------------------------------------------------
@@ -131,5 +135,31 @@ game.createClass('Field',{
         
         this.selected = !this.selected;
         }
+});
+// ==============================================================================	
+// Clase del Boton Reset
+// ==============================================================================
+game.createClass('Button',{
+    // ------------------------------------------------------------------------------
+    // Le paso las variables x,y a mi constructor para instanciarlo ya en posicion
+    // ------------------------------------------------------------------------------
+        init: function(posx, posy) {
+            this.button = new game.Sprite('repeat.png');
+    // ------------------------------------------------------------------------------
+    // Variable interactive hace nuestra casilla interactiva con los input
+    // ------------------------------------------------------------------------------
+            this.button.interactive = true;
+            this.button.position.y = posy;
+            this.button.position.x = posx;
+            this.button.addTo(game.scene.stage);
+            this.button.click = this.click.bind(this);
+    // ------------------------------------------------------------------------------       
+        },
+    // ------------------------------------------------------------------------------
+    // Funcion para reconocer los clicks del mouse en el objeto
+    // ------------------------------------------------------------------------------
+        click: function(){
+            game.system.setScene('Main');
+            }
 });
 });
