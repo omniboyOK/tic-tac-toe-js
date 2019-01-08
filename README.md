@@ -7,7 +7,7 @@ Practica de Javascript hecha con Panda.js
 * Condiciones de victoria
 * Indicador de Jugador
 
-[## Test the game](https://omnigames.ramirorojo.com/telegram/games/tateti/)
+## [Test the game](https://omnigames.ramirorojo.com/telegram/games/tateti/)
 
 ## Framework
 
